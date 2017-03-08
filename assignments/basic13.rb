@@ -92,14 +92,73 @@
 
 # puts (1..255).to_a.find_all { |i| i.odd? }
 
-arr = (1..255).to_a
+# arr = (1..255).to_a
+#
+# for i in arr
+#     y = []
+#     if i.odd?
+#         y << i
+#     else
+#         next
+#     end
+#     puts y
+# end
 
-for i in arr
-    y = []
-    if i.odd?
-        y << i
-    else
-        next
-    end
-    puts y
-end
+
+
+# Greater than Y
+# refactor per example:
+
+# array = [1, 3, 5, 7]
+# y = 6
+# puts array.each if { |i| i > y }
+
+# puts Array.new(10) { rand(1..15) } .find_all { |i| i > y } .length
+
+
+
+# Square the values
+# Given any array x, say [1, 5, 10, -2], create an algorithm (sets of instructions) that multiplies each value in the array by itself. When the program is done, the array x should have values that have been squared, say [1, 25, 100, 4].
+
+
+
+# Eliminate Negative Numbers
+# Given any array x, say [1, 5, 10, -2], create an algorithm that replaces any negative number with the value of 0. When the program is done, x should have no negative values, say [1, 5, 10, 0].
+#
+# puts Array.new(15) { rand(-30...30) } .reject! { |i| i < 0 }
+
+
+
+# Max, Min, and Average
+# Given any array x, say [1, 5, 10, -2], create an algorithm that returns a hash with the maximum number in the array, the minimum value in the array, and the average of the values in the array.
+
+# Shifting the Values in the Array
+# Given any array x, say [1, 5, 10, 7, -2], create an algorithm that shifts each number by one to the front. For example, when the program is done, an x of [1, 5, 10, 7, -2] should become [5, 10, 7, -2, 0].
+
+# arr = [1,3,5,7,9]
+# for i in arr
+#     puts (arr.shift)
+# end
+
+# a = [1, 5, 10, 7, -2]; a.shift
+# puts a << 0
+
+# x = []
+# arr = Array.new(10) { rand(-50...50) } .shift
+# puts arr
+
+
+
+# Number to String
+# Write a program that takes an array of numbers and replaces any negative number with the string 'Dojo'. For example, if array x is initially [-1, -3, 2] after your program is done that array should be ['Dojo', 'Dojo', 2].
+
+# neg_arr = [1,3,5,-7,9,32,-24,-121,5, 8]
+# # for i in neg_arr
+# #     if neg_arr[i] <= 0
+# #         neg_arr.slice!(i)
+# #     end
+# #     puts neg_arr
+# # end
+#
+# neg_arr.each { |i| i <= 0 } .slice!(neg_arr[i])
+# puts neg_arr
