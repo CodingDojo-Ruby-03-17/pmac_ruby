@@ -6,7 +6,7 @@ class Project
         @description = description
     end
     def elevator_pitch
-        puts "I have this great #{self.name}, that does #{self.description}!"
+        puts "I have this great #{name}, that does #{description}!"
     end
 end
 
