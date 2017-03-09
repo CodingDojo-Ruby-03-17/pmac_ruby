@@ -1,7 +1,5 @@
 require_relative 'mammal'
 class Dog < Mammal
-
-
     # Default health of 150 (inherited)
     def pet # "increases the health by 5"
         puts "Were getting pet!"

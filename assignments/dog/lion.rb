@@ -1,21 +1,31 @@
+require_relative 'mammal'
 class Lion < Mammal
+
     def initialize health=170
-        puts @health
+        super health
+        puts "It's a new Lion!"
+        puts health
         self
     end
 
     def fly
+        puts "We're flying!"
         @health -= 10
+        puts health
         self
     end
 
     def attack_town
+        puts "We're attacking!"
         @health -= 50
+        puts health
         self
     end
 
     def eat_humans
+        puts "Yummy, humans!"
         @health += 20
+        puts health
         self
     end
 end
