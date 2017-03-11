@@ -1,57 +1,45 @@
-class Account
+class BankAccount
 
     attr_accessor :checking_account_number, :savings_account_number, :checking_balance, :savings_balance, :total_balance
     @@total_balance = 0
     @@total_accounts = 0
 
-# account_balances = {
-#     checking => "checking_balance",
-#     savings => "savings_balance"
-# }
-    def initialize(account_type, ammount)
-        @account_type = account_type
-        @ammount = ammount
-        puts "Creating a new account!"
-        puts "You created a #{@account_type} account, with #{@ammount} in it!"
+    accounts_db = {
+        "checking_totals" => 0.00,
+        "savings_totals" => 0.00,
+        "num_of_checking_accounts" => 0,
+        "num_of_savings_accounts" => 0,
+        "account_numbers" => []
+    }
+
+    def total_balance()
+        @@total_balance = accounts_db["checking_totals"] + accounts_db["savings_totals"]
+        puts "Your total balance is #{@@total_balance}"
     end
 
+    def initialize()
+        puts "Welcome to the bank!"
+    end
 
     # private
 
-    def create_account(account_type, balance)
-        @account_type = account_type
-        puts "Creating a #{account_type} account!"
-        account_number = rand(999999)
-        puts "Your #{account_type} account number is: " + account_number.to_s
-        # balance = rand.round(2)
-        # puts balance
-        puts "completed creating a #{account_type} account!"
+    def account_information
+        puts account number
+        puts total money
+        puts checking account balance
+        puts saving account balance
+        puts interest rate
     end
 
+    private
     def interest_rate
         @interest = 0.01
     end
 end
 
-account_1 = Account.new("Checking", 0)
+account_1 = BankAccount.new("Checking", 0)
 
 
-
-
-    # def deposit(account_type, ammount)
-    #     puts "Making a deposit!"
-    #     # check for account type
-    #     # do math on balance
-    #     # return new balance
-    # end
-    #
-    # def withdraw(account_type, ammount)
-    #     puts "Making a withdrawal!"
-    #     # check for account type
-    #     # do math on balance
-    #     # return error if funds insufficient
-    #     if @ammount > self.total_balance { raise "Insufficient funds" }
-    # end
     #
     # def display_account_number(account_type)
     #     puts "in the display accounts number method!"
