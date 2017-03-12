@@ -4,7 +4,9 @@ class BankAccount
     @@total_balance = 0
     @@total_accounts = 0
 
-    accounts_db = {
+
+
+    @accounts_db = {
         "checking_totals" => 0.00,
         "savings_totals" => 0.00,
         "num_of_checking_accounts" => 0,
@@ -12,16 +14,22 @@ class BankAccount
         "account_numbers" => []
     }
 
+
+
     def total_balance()
         @@total_balance = accounts_db["checking_totals"] + accounts_db["savings_totals"]
         puts "Your total balance is #{@@total_balance}"
     end
 
+
+
+
     def initialize()
         puts "Welcome to the bank!"
     end
 
-    # private
+
+
 
     def account_information
         puts account number
@@ -31,13 +39,78 @@ class BankAccount
         puts interest rate
     end
 
+    # Checking Accounts:
+
+
+    def new_checking(ammount)
+        # @account_type = account_type
+        @ammount = ammount
+        puts "Creating a new account!"
+        @account_type == "checking"
+        account_number = rand(999999)
+        @accounts_db["account_numbers"].push(account_number)
+        @accounts_db["num_of_checking_accounts"] += 1
+        @accounts_db["checking_totals"] += @ammount
+        puts "Created new checking account, your checking balance is #{accounts_db["checking_totals"]}"
+    end
+
+    # def deposit(account_type, ammount)
+    #     puts "Making a deposit!"
+    #     # check for account type
+    #     # do math on balance
+    #     # return new balance
+    # end
+    #
+    # def withdraw(account_type, ammount)
+    #     puts "Making a withdrawal!"
+    #     # check for account type
+    #     # do math on balance
+    #     # return error if funds insufficient
+    #     if @ammount > self.total_balance { raise "Insufficient funds" }
+    # end
+
+
+    # Savings Accounts
+
+
+
+    def new_savings(account_type, ammount)
+        @account_type == "savings"
+        account_number = rand(999999)
+        accounts_db["num_of_savings_accounts"] += 1
+        accounts_db["savings_totals"] += @ammount
+        puts "Created a new savings account, your savings balance is #{accounts_db["savings_totals"]}"
+    end
+
+    # def deposit(account_type, ammount)
+    #     puts "Making a deposit!"
+    #     # check for account type
+    #     # do math on balance
+    #     # return new balance
+    # end
+    #
+    # def withdraw(account_type, ammount)
+    #     puts "Making a withdrawal!"
+    #     # check for account type
+    #     # do math on balance
+    #     # return error if funds insufficient
+    #     if @ammount > self.total_balance { raise "Insufficient funds" }
+    # end
+
+
+
     private
     def interest_rate
         @interest = 0.01
     end
 end
 
-account_1 = BankAccount.new("Checking", 0)
+# customer_1 = BankAccount.new()
+customer_2 = BankAccount.new.new_checking(5.00)
+
+
+
+
 
 
     #
