@@ -1,0 +1,255 @@
+Bundle complete! 16 Gemfile dependencies, 63 gems now installed.
+Use `bundle show [gemname]` to see where a bundled gem is installed.
+paulmaclachlan@MBA orm_practice (master)*$ rails c
+Running via Spring preloader in process 2597
+Loading development environment (Rails 5.0.2)
+2.3.3 :001 > User.all
+  User Load (3.3ms)  SELECT "users".* FROM "users"
+ => #<ActiveRecord::Relation [#<User id: 1, first_name: "John", last_name: "Doe", password: "secret", email: "john@doe.com", age: 30, created_at: "2017-03-13 04:22:24", updated_at: "2017-03-13 04:22:24">, #<User id: 2, first_name: "Jane", last_name: "Doe", password: "secret2", email: "jane@doe.com", age: nil, created_at: "2017-03-13 04:24:18", updated_at: "2017-03-13 04:24:18">]> 
+2.3.3 :002 > Hirb.enable
+ => true 
+2.3.3 :003 > User.all
+  User Load (0.2ms)  SELECT "users".* FROM "users"
++----+------------+-----------+----------+--------------+-----+---------------------+---------------------+
+| id | first_name | last_name | password | email        | age | created_at          | updated_at          |
++----+------------+-----------+----------+--------------+-----+---------------------+---------------------+
+| 1  | John       | Doe       | secret   | john@doe.com | 30  | 2017-03-13 04:22... | 2017-03-13 04:22... |
+| 2  | Jane       | Doe       | secret2  | jane@doe.com |     | 2017-03-13 04:24... | 2017-03-13 04:24... |
++----+------------+-----------+----------+--------------+-----+---------------------+---------------------+
+2 rows in set
+2.3.3 :004 > User.first
+  User Load (0.3ms)  SELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?  [["LIMIT", 1]]
++----+------------+-----------+----------+--------------+-----+---------------------+---------------------+
+| id | first_name | last_name | password | email        | age | created_at          | updated_at          |
++----+------------+-----------+----------+--------------+-----+---------------------+---------------------+
+| 1  | John       | Doe       | secret   | john@doe.com | 30  | 2017-03-13 04:22... | 2017-03-13 04:22... |
++----+------------+-----------+----------+--------------+-----+---------------------+---------------------+
+1 row in set
+2.3.3 :005 > User.last
+  User Load (0.3ms)  SELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT ?  [["LIMIT", 1]]
++----+------------+-----------+----------+--------------+-----+---------------------+---------------------+
+| id | first_name | last_name | password | email        | age | created_at          | updated_at          |
++----+------------+-----------+----------+--------------+-----+---------------------+---------------------+
+| 2  | Jane       | Doe       | secret2  | jane@doe.com |     | 2017-03-13 04:24... | 2017-03-13 04:24... |
++----+------------+-----------+----------+--------------+-----+---------------------+---------------------+
+1 row in set
+2.3.3 :006 > User.find(2)
+  User Load (0.2ms)  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?  [["id", 2], ["LIMIT", 1]]
++----+------------+-----------+----------+--------------+-----+---------------------+---------------------+
+| id | first_name | last_name | password | email        | age | created_at          | updated_at          |
++----+------------+-----------+----------+--------------+-----+---------------------+---------------------+
+| 2  | Jane       | Doe       | secret2  | jane@doe.com |     | 2017-03-13 04:24... | 2017-03-13 04:24... |
++----+------------+-----------+----------+--------------+-----+---------------------+---------------------+
+1 row in set
+2.3.3 :007 > User.find(4)
+  User Load (0.2ms)  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?  [["id", 4], ["LIMIT", 1]]
+ActiveRecord::RecordNotFound: Couldn't find User with 'id'=4
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/activerecord-5.0.2/lib/active_record/core.rb:173:in `find'
+        from (irb):7
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/railties-5.0.2/lib/rails/commands/console.rb:65:in `start'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/railties-5.0.2/lib/rails/commands/console_helper.rb:9:in `start'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/railties-5.0.2/lib/rails/commands/commands_tasks.rb:78:in `console'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/railties-5.0.2/lib/rails/commands/commands_tasks.rb:49:in `run_command!'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/railties-5.0.2/lib/rails/commands.rb:18:in `<top (required)>'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/activesupport-5.0.2/lib/active_support/dependencies.rb:293:in `require'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/activesupport-5.0.2/lib/active_support/dependencies.rb:293:in `block in require'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/activesupport-5.0.2/lib/active_support/dependencies.rb:259:in `load_dependency'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/activesupport-5.0.2/lib/active_support/dependencies.rb:293:in `require'
+        from /Users/paulmaclachlan/Desktop/codingdojogit/pmac_ruby/rails/orm_practice/bin/rails:9:in `<top (required)>'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/activesupport-5.0.2/lib/active_support/dependencies.rb:287:in `load'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/activesupport-5.0.2/lib/active_support/dependencies.rb:287:in `block in load'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/activesupport-5.0.2/lib/active_support/dependencies.rb:259:in `load_dependency'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/activesupport-5.0.2/lib/active_support/dependencies.rb:287:in `load'
+        from /Users/paulmaclachlan/.rvm/rubies/ruby-2.3.3/lib/ruby/site_ruby/2.3.0/rubygems/core_ext/kernel_require.rb:55:in `require'
+        from /Users/paulmaclachlan/.rvm/rubies/ruby-2.3.3/lib/ruby/site_ruby/2.3.0/rubygems/core_ext/kernel_require.rb:55:in `require'
+        from -e:1:in `<main>'
+2.3.3 :008 > User.find_by(first_name: "Jane")
+  User Load (0.3ms)  SELECT  "users".* FROM "users" WHERE "users"."first_name" = ? LIMIT ?  [["first_name", "Jane"], ["LIMIT", 1]]
++----+------------+-----------+----------+--------------+-----+---------------------+---------------------+
+| id | first_name | last_name | password | email        | age | created_at          | updated_at          |
++----+------------+-----------+----------+--------------+-----+---------------------+---------------------+
+| 2  | Jane       | Doe       | secret2  | jane@doe.com |     | 2017-03-13 04:24... | 2017-03-13 04:24... |
++----+------------+-----------+----------+--------------+-----+---------------------+---------------------+
+1 row in set
+2.3.3 :009 > User.find_by(last_name: "Jane")
+  User Load (0.4ms)  SELECT  "users".* FROM "users" WHERE "users"."last_name" = ? LIMIT ?  [["last_name", "Jane"], ["LIMIT", 1]]
+ => nil 
+2.3.3 :010 > User.find_by(last_name: "Doe")
+  User Load (0.2ms)  SELECT  "users".* FROM "users" WHERE "users"."last_name" = ? LIMIT ?  [["last_name", "Doe"], ["LIMIT", 1]]
++----+------------+-----------+----------+--------------+-----+---------------------+---------------------+
+| id | first_name | last_name | password | email        | age | created_at          | updated_at          |
++----+------------+-----------+----------+--------------+-----+---------------------+---------------------+
+| 1  | John       | Doe       | secret   | john@doe.com | 30  | 2017-03-13 04:22... | 2017-03-13 04:22... |
++----+------------+-----------+----------+--------------+-----+---------------------+---------------------+
+1 row in set
+2.3.3 :011 > User.where(last_name: "Doe")
+  User Load (0.5ms)  SELECT "users".* FROM "users" WHERE "users"."last_name" = ?  [["last_name", "Doe"]]
++----+------------+-----------+----------+--------------+-----+---------------------+---------------------+
+| id | first_name | last_name | password | email        | age | created_at          | updated_at          |
++----+------------+-----------+----------+--------------+-----+---------------------+---------------------+
+| 1  | John       | Doe       | secret   | john@doe.com | 30  | 2017-03-13 04:22... | 2017-03-13 04:22... |
+| 2  | Jane       | Doe       | secret2  | jane@doe.com |     | 2017-03-13 04:24... | 2017-03-13 04:24... |
++----+------------+-----------+----------+--------------+-----+---------------------+---------------------+
+2 rows in set
+2.3.3 :012 > User.where(last_name: "Doe")
+  User Load (0.3ms)  SELECT "users".* FROM "users" WHERE "users"."last_name" = ?  [["last_name", "Doe"]]
++----+------------+-----------+----------+--------------+-----+---------------------+---------------------+
+| id | first_name | last_name | password | email        | age | created_at          | updated_at          |
++----+------------+-----------+----------+--------------+-----+---------------------+---------------------+
+| 1  | John       | Doe       | secret   | john@doe.com | 30  | 2017-03-13 04:22... | 2017-03-13 04:22... |
+| 2  | Jane       | Doe       | secret2  | jane@doe.com |     | 2017-03-13 04:24... | 2017-03-13 04:24... |
++----+------------+-----------+----------+--------------+-----+---------------------+---------------------+
+2 rows in set
+2.3.3 :013 > User.where(last_name: "Doe").select(:first_name, :last_name, :email)
+  User Load (0.2ms)  SELECT "users"."first_name", "users"."last_name", "users"."email" FROM "users" WHERE "users"."last_name" = ?  [["last_name", "Doe"]]
++----+------------+-----------+--------------+
+| id | first_name | last_name | email        |
++----+------------+-----------+--------------+
+|    | John       | Doe       | john@doe.com |
+|    | Jane       | Doe       | jane@doe.com |
++----+------------+-----------+--------------+
+2 rows in set
+2.3.3 :014 > user.second.up
+user.second.up                              user.second.update_sources=
+user.second.upcase                          user.second.update_sql
+user.second.upcase!                         user.second.update_table_definition
+user.second.upcase_first                    user.second.update_value
+user.second.update                          user.second.updated
+user.second.update!                         user.second.updated?
+user.second.update_all                      user.second.updated_at
+user.second.update_attribute                user.second.updated_at=
+user.second.update_attributes               user.second.updated_at?
+user.second.update_attributes!              user.second.updated_at_before_type_cast
+user.second.update_cache?                   user.second.updated_at_came_from_user?
+user.second.update_column                   user.second.updated_at_change
+user.second.update_columns                  user.second.updated_at_changed?
+user.second.update_config                   user.second.updated_at_previous_change
+user.second.update_cookies_from_jar         user.second.updated_at_previously_changed?
+user.second.update_counters                 user.second.updated_at_was
+user.second.update_file                     user.second.updated_at_will_change!
+user.second.update_param                    user.second.upto
+user.second.update_slot                     user.second.uptodate?
+user.second.update_sources                  
+2.3.3 :014 > user.second.update(age: 41)
+NameError: undefined local variable or method `user' for main:Object
+        from (irb):14
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/railties-5.0.2/lib/rails/commands/console.rb:65:in `start'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/railties-5.0.2/lib/rails/commands/console_helper.rb:9:in `start'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/railties-5.0.2/lib/rails/commands/commands_tasks.rb:78:in `console'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/railties-5.0.2/lib/rails/commands/commands_tasks.rb:49:in `run_command!'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/railties-5.0.2/lib/rails/commands.rb:18:in `<top (required)>'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/activesupport-5.0.2/lib/active_support/dependencies.rb:293:in `require'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/activesupport-5.0.2/lib/active_support/dependencies.rb:293:in `block in require'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/activesupport-5.0.2/lib/active_support/dependencies.rb:259:in `load_dependency'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/activesupport-5.0.2/lib/active_support/dependencies.rb:293:in `require'
+        from /Users/paulmaclachlan/Desktop/codingdojogit/pmac_ruby/rails/orm_practice/bin/rails:9:in `<top (required)>'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/activesupport-5.0.2/lib/active_support/dependencies.rb:287:in `load'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/activesupport-5.0.2/lib/active_support/dependencies.rb:287:in `block in load'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/activesupport-5.0.2/lib/active_support/dependencies.rb:259:in `load_dependency'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/activesupport-5.0.2/lib/active_support/dependencies.rb:287:in `load'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/spring-2.0.1/lib/spring/commands/rails.rb:6:in `call'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/spring-2.0.1/lib/spring/command_wrapper.rb:38:in `call'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/spring-2.0.1/lib/spring/application.rb:191:in `block in serve'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/spring-2.0.1/lib/spring/application.rb:161:in `fork'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/spring-2.0.1/lib/spring/application.rb:161:in `serve'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/spring-2.0.1/lib/spring/application.rb:131:in `block in run'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/spring-2.0.1/lib/spring/application.rb:125:in `loop'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/spring-2.0.1/lib/spring/application.rb:125:in `run'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/spring-2.0.1/lib/spring/application/boot.rb:19:in `<top (required)>'
+        from /Users/paulmaclachlan/.rvm/rubies/ruby-2.3.3/lib/ruby/site_ruby/2.3.0/rubygems/core_ext/kernel_require.rb:55:in `require'
+        from /Users/paulmaclachlan/.rvm/rubies/ruby-2.3.3/lib/ruby/site_ruby/2.3.0/rubygems/core_ext/kernel_require.rb:55:in `require'
+        from -e:1:in `<main>'
+2.3.3 :015 > user.all
+NameError: undefined local variable or method `user' for main:Object
+        from (irb):15
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/railties-5.0.2/lib/rails/commands/console.rb:65:in `start'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/railties-5.0.2/lib/rails/commands/console_helper.rb:9:in `start'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/railties-5.0.2/lib/rails/commands/commands_tasks.rb:78:in `console'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/railties-5.0.2/lib/rails/commands/commands_tasks.rb:49:in `run_command!'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/railties-5.0.2/lib/rails/commands.rb:18:in `<top (required)>'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/activesupport-5.0.2/lib/active_support/dependencies.rb:293:in `require'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/activesupport-5.0.2/lib/active_support/dependencies.rb:293:in `block in require'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/activesupport-5.0.2/lib/active_support/dependencies.rb:259:in `load_dependency'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/activesupport-5.0.2/lib/active_support/dependencies.rb:293:in `require'
+        from /Users/paulmaclachlan/Desktop/codingdojogit/pmac_ruby/rails/orm_practice/bin/rails:9:in `<top (required)>'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/activesupport-5.0.2/lib/active_support/dependencies.rb:287:in `load'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/activesupport-5.0.2/lib/active_support/dependencies.rb:287:in `block in load'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/activesupport-5.0.2/lib/active_support/dependencies.rb:259:in `load_dependency'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/activesupport-5.0.2/lib/active_support/dependencies.rb:287:in `load'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/spring-2.0.1/lib/spring/commands/rails.rb:6:in `call'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/spring-2.0.1/lib/spring/command_wrapper.rb:38:in `call'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/spring-2.0.1/lib/spring/application.rb:191:in `block in serve'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/spring-2.0.1/lib/spring/application.rb:161:in `fork'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/spring-2.0.1/lib/spring/application.rb:161:in `serve'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/spring-2.0.1/lib/spring/application.rb:131:in `block in run'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/spring-2.0.1/lib/spring/application.rb:125:in `loop'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/spring-2.0.1/lib/spring/application.rb:125:in `run'
+        from /Users/paulmaclachlan/.rvm/gems/ruby-2.3.3/gems/spring-2.0.1/lib/spring/application/boot.rb:19:in `<top (required)>'
+        from /Users/paulmaclachlan/.rvm/rubies/ruby-2.3.3/lib/ruby/site_ruby/2.3.0/rubygems/core_ext/kernel_require.rb:55:in `require'
+        from /Users/paulmaclachlan/.rvm/rubies/ruby-2.3.3/lib/ruby/site_ruby/2.3.0/rubygems/core_ext/kernel_require.rb:55:in `require'
+        from -e:1:in `<main>'
+2.3.3 :016 > User.all
+  User Load (0.2ms)  SELECT "users".* FROM "users"
++----+------------+-----------+----------+--------------+-----+---------------------+---------------------+
+| id | first_name | last_name | password | email        | age | created_at          | updated_at          |
++----+------------+-----------+----------+--------------+-----+---------------------+---------------------+
+| 1  | John       | Doe       | secret   | john@doe.com | 30  | 2017-03-13 04:22... | 2017-03-13 04:22... |
+| 2  | Jane       | Doe       | secret2  | jane@doe.com |     | 2017-03-13 04:24... | 2017-03-13 04:24... |
++----+------------+-----------+----------+--------------+-----+---------------------+---------------------+
+2 rows in set
+2.3.3 :017 > User.second.update(age: 41)
+  User Load (0.4ms)  SELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ? OFFSET ?  [["LIMIT", 1], ["OFFSET", 1]]
+   (0.1ms)  begin transaction
+  SQL (0.4ms)  UPDATE "users" SET "age" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["age", 41], ["updated_at", 2017-03-13 04:43:33 UTC], ["id", 2]]
+   (2.6ms)  commit transaction
+ => true 
+2.3.3 :018 > User.all
+  User Load (0.2ms)  SELECT "users".* FROM "users"
++----+------------+-----------+----------+--------------+-----+---------------------+---------------------+
+| id | first_name | last_name | password | email        | age | created_at          | updated_at          |
++----+------------+-----------+----------+--------------+-----+---------------------+---------------------+
+| 1  | John       | Doe       | secret   | john@doe.com | 30  | 2017-03-13 04:22... | 2017-03-13 04:22... |
+| 2  | Jane       | Doe       | secret2  | jane@doe.com | 41  | 2017-03-13 04:24... | 2017-03-13 04:43... |
++----+------------+-----------+----------+--------------+-----+---------------------+---------------------+
+2 rows in set
+2.3.3 :019 > User.all.update(age: 40)
+  User Load (0.2ms)  SELECT "users".* FROM "users"
+   (0.2ms)  begin transaction
+  SQL (0.3ms)  UPDATE "users" SET "age" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["age", 40], ["updated_at", 2017-03-13 04:43:55 UTC], ["id", 1]]
+   (1.3ms)  commit transaction
+   (0.1ms)  begin transaction
+  SQL (0.3ms)  UPDATE "users" SET "age" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["age", 40], ["updated_at", 2017-03-13 04:43:55 UTC], ["id", 2]]
+   (0.7ms)  commit transaction
++----+------------+-----------+----------+--------------+-----+---------------------+---------------------+
+| id | first_name | last_name | password | email        | age | created_at          | updated_at          |
++----+------------+-----------+----------+--------------+-----+---------------------+---------------------+
+| 1  | John       | Doe       | secret   | john@doe.com | 40  | 2017-03-13 04:22... | 2017-03-13 04:43... |
+| 2  | Jane       | Doe       | secret2  | jane@doe.com | 40  | 2017-03-13 04:24... | 2017-03-13 04:43... |
++----+------------+-----------+----------+--------------+-----+---------------------+---------------------+
+2 rows in set
+2.3.3 :020 > u = User.last
+  User Load (0.3ms)  SELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT ?  [["LIMIT", 1]]
++----+------------+-----------+----------+--------------+-----+---------------------+---------------------+
+| id | first_name | last_name | password | email        | age | created_at          | updated_at          |
++----+------------+-----------+----------+--------------+-----+---------------------+---------------------+
+| 2  | Jane       | Doe       | secret2  | jane@doe.com | 40  | 2017-03-13 04:24... | 2017-03-13 04:43... |
++----+------------+-----------+----------+--------------+-----+---------------------+---------------------+
+1 row in set
+2.3.3 :021 > u
++----+------------+-----------+----------+--------------+-----+---------------------+---------------------+
+| id | first_name | last_name | password | email        | age | created_at          | updated_at          |
++----+------------+-----------+----------+--------------+-----+---------------------+---------------------+
+| 2  | Jane       | Doe       | secret2  | jane@doe.com | 40  | 2017-03-13 04:24... | 2017-03-13 04:43... |
++----+------------+-----------+----------+--------------+-----+---------------------+---------------------+
+1 row in set
+2.3.3 :022 > u.destroy
+   (0.2ms)  begin transaction
+  SQL (1.6ms)  DELETE FROM "users" WHERE "users"."id" = ?  [["id", 2]]
+   (0.7ms)  commit transaction
++----+------------+-----------+----------+--------------+-----+---------------------+---------------------+
+| id | first_name | last_name | password | email        | age | created_at          | updated_at          |
++----+------------+-----------+----------+--------------+-----+---------------------+---------------------+
+| 2  | Jane       | Doe       | secret2  | jane@doe.com | 40  | 2017-03-13 04:24... | 2017-03-13 04:43... |
++----+------------+-----------+----------+--------------+-----+---------------------+---------------------+
+1 row in set
+2.3.3 :023 > 
