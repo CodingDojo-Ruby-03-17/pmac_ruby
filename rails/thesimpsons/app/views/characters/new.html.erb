@@ -1,0 +1,10 @@
+<h1>Characters#new</h1>
+<p>Add a new character here!</p>
+
+<form class="new_char" action="/characters" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    Name:<input type="text" name="character[name]" value="">
+    Location: <input type="text" name="character[location]" value="">
+    Occupation: <input type="text" name="character[occupation]" value="">
+    <button type="submit" name="submit">Submit</button>
+</form>

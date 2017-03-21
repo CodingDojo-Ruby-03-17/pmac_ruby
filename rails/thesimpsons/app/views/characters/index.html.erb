@@ -1,0 +1,29 @@
+<h1>the simpsons!</h1>
+<!-- <p>Find me in app/views/characters/index.html.erb</p> -->
+<!-- <h1><%= flash[:greeting] %></h1> -->
+<table>
+    <thead>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Occupation</th>
+        <th>Created At</th>
+        <th>Updated At</th>
+    </thead>
+    <tbody>
+        <% if @characters != nil %>
+        <% @characters.each do | char | %>
+        <tr>
+            <td> <%= char.name %> </td>
+            <td> <%= char.location %> </td>
+            <td> <%= char.occupation %> </td>
+            <td> <%= char.created_at %></td>
+            <td> <%= char.updated_at %></td>
+        </tr>
+        <% end %>
+        <% end %>
+    </tbody>
+    <% %>
+
+</table>
+
+<a href="characters/new">New Character</a>
