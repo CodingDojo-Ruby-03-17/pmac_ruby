@@ -1,0 +1,35 @@
+<% content_for :left_content do %>
+
+<h1>Show</h1>
+
+<p><%= @char.name  %></p>
+<p><%= @char.location  %></p>
+<p><%= @char.occupation  %></p>
+
+<a href="/characters/<%= @char.id %>" data-method="delete">Delete</a>
+<!-- <%= form_for @char, url: { action: "delete" } do |f| %>
+    <%= f.submit "Delete" %>
+<% end %> -->
+
+
+<!-- <form class="" action="/characters/<%= @char.id %>" method="delete">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="_method" value="patch">
+    <input type="submit" name="delete" value="delete">
+</form> -->
+
+<a href="/">Home</a>
+<% end %>
+
+<% content_for :right_content do %>
+
+<form class="new_char" action="/characters/<%= @char.id %>" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="_method" value="patch">
+    <p>Name:<input type="text" name="character[name]" value="<%= @char.name %>"></p>
+    <p>Location: <input type="text" name="character[location]" value="<%= @char.occupation %>"></p>
+    <p>Occupation: <input type="text" name="character[occupation]" value="<%= @char.location %>"></p>
+    <button type="submit" name="submit">Submit</button>
+</form>
+
+<% end %>

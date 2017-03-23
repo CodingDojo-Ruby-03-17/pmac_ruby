@@ -5,7 +5,15 @@ Rails.application.routes.draw do
 
     get 'characters/new'
 
+    get 'characters/:id' => 'characters#show'
+
+    patch 'characters/:id' => 'characters#update'
+
     post 'characters' => 'characters#create'
+
+    delete 'characters/:id' => 'characters#delete'
+
+
 
   # post 'users' => '?'
 
