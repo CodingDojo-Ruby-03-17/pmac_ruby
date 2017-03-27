@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170326220441) do
+ActiveRecord::Schema.define(version: 20170326220734) do
 
   create_table "blogs", force: :cascade do |t|
     t.string   "name"
@@ -22,15 +22,19 @@ ActiveRecord::Schema.define(version: 20170326220441) do
   create_table "messages", force: :cascade do |t|
     t.string   "author"
     t.text     "message"
+    t.integer  "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_messages_on_post_id"
   end
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"
     t.text     "content"
+    t.integer  "blog_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["blog_id"], name: "index_posts_on_blog_id"
   end
 
 end
