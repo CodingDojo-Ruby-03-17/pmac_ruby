@@ -1,0 +1,15 @@
+<h1>Users</h1>
+
+
+<form action="/users" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <p>
+        Name: <input type="text" name="name" placeholder="Name">
+    </p>
+    <p>
+        Age: <input type="text" name="age" placeholder="Age">
+    </p>
+    <input type="submit" name="Submit" value="Create User">
+</form>
+
+<h1>SHOW</h1>
