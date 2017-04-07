@@ -1,0 +1,20 @@
+<h1>Listing Users</h1>
+    <table>
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td>Age</td>
+                <td>Location</td>
+            </tr>
+        </thead>
+    <tbody>
+        <% @users.each do |user| %>
+            <tr>
+                <td><%= user.name %></td>
+                <td><%= user.age %></td>
+                <td><%= user.location %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+<a href="/new">New User</a>
