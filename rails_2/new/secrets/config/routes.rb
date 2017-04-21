@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :users
 
+  get 'login' => 'users#index'
+
   get 'users/' => 'users#index' # display a list of all users
 
   get 'users/new' => 'users#new' # return an HTML form for creating a new users
@@ -13,9 +15,11 @@ Rails.application.routes.draw do
 
   patch 'users/:id' => 'users#update' # update a specific user
 
+  post 'sessions/create'
+
   delete 'users/:id' => 'users#destroy' # delete a specific user
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
 end
 
 
