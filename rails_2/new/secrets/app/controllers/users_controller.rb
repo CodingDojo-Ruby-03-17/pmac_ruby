@@ -3,7 +3,7 @@ class UsersController < ApplicationController
       user = User.new( user_params )
 
       if user.save
-          flash[:success] = 'User #{user.name} created'
+          flash[:success] = "User #{user.name} created"
           redirect_to "/users/#{user.id}"
       else
           flash[:errors] = user.errors.full_messages
@@ -24,19 +24,21 @@ class UsersController < ApplicationController
   end
 
   def update
-      @user = User.find(params[:id])
-    #   flash[:success] = ['User updated']
-    #   redirect_to "/users/#{user.id}"
-    if user.save
-        flash[:success] = 'User updated'
+      user = User.find(params[:id])
+    if user.update_attributes( user_params )
+        flash[:success] = "User #{user.name} successfully updated"
         redirect_to "/users/#{user.id}"
     else
         flash[:errors] = user.errors.full_messages
-        redirect_to '/'
+        redirect_to "/users/#{user.id}"
     end
   end
 
   def delete
+      User.find(params[:id]).destroy
+      reset_session
+      flash[:success] = "User #{user.name} deleted"
+      redirect_to "/users"
   end
 
   def index

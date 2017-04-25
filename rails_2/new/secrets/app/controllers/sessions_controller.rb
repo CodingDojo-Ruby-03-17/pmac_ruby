@@ -1,6 +1,7 @@
 
 class SessionsController < ApplicationController
   def new
+      @user = User.new
   end
 
   def create
@@ -12,7 +13,7 @@ class SessionsController < ApplicationController
       flash[:success] = "Welcome, #{user.name}"
       redirect_to "/users/#{user.id}"
     else
-        flash[:errors] = "Email / password combination invalid"
+        flash[:errors] = "Email and password combination invalid"
         redirect_to "/"
     end
   end
@@ -20,6 +21,6 @@ class SessionsController < ApplicationController
   def destroy
     reset_session
     redirect_to "/"
-    flash[:success] = "successfully logged out"
+    flash[:success] = "Successfully logged out."
   end
 end
