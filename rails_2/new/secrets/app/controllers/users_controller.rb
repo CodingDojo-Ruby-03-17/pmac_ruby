@@ -36,7 +36,7 @@ class UsersController < ApplicationController
       User.find(params[:id]).destroy
       reset_session
       flash[:success] = "User #{user.name} deleted"
-      redirect_to "/users"
+      redirect_to "/"
   end
 
   def index
