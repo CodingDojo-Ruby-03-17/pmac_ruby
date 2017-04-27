@@ -4,16 +4,13 @@ class UsersController < ApplicationController
 
       if user.save
           flash[:success] = "User #{user.name} created"
+          session[:user_id] = user.id
           redirect_to "/users/#{user.id}"
       else
           flash[:errors] = user.errors.full_messages
           redirect_to '/'
       end
   end
-
-  # def new
-  #     @user = User.new
-  # end
 
   def show
       @user = User.find(params[:id])
