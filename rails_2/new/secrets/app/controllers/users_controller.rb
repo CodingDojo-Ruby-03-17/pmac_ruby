@@ -32,6 +32,7 @@ class UsersController < ApplicationController
   end
 
   def delete
+      user = User.find(params[:id])
       User.find(params[:id]).destroy
       reset_session
       flash[:success] = "User #{user.name} deleted"
